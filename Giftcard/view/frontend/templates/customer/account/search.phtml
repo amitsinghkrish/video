@@ -1,0 +1,47 @@
+<script>
+require(['jquery',
+        'jquery/ui',
+        'mage/mage',
+        'mage/translate'
+        ], function ($) {
+        jQuery = $;
+
+        /* save and validation */
+        var dataForm = jQuery('.form-md-giftcard');
+        dataForm.mage('validation');
+        jQuery('.check-giftcard').click(function () {            
+            saveForm(jQuery);
+        });
+        
+        function saveForm(jQuery) {
+            if (dataForm.valid()) {
+                dataForm.submit();
+            } else {
+                
+            }
+        }
+        /*save and validation  */
+});
+</script>
+
+<div class="block">
+    <div class="block-title">
+        <strong>Status</strong>
+    </div>
+    <form method="post" action="<?php echo $block->getUrl('giftcard/customer/code'); ?>" class="form form-md-giftcard" id="form-validate">
+        <fieldset class="fieldset">
+            <input type="hidden" name="form_key" value='<?php echo $this->getFormKey(); ?>' />
+            <div class="field required">
+                <label for="giftcard_code" class="label"><span><?php echo __('Enter gift card code'); ?></span></label>
+                <div class="control">
+                    <input type="text" class="input-text required-entry" title="Enter gift card code" value="" name="giftcard_code" id="giftcard_code">
+                </div>
+            </div>
+        </fieldset>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button title="Check Status and Balance" class="action primary check-giftcard" type="submit"><span>Check Status and Balance</span></button>
+            </div>
+        </div>
+    </form>
+</div>

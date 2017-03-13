@@ -1,0 +1,152 @@
+<?php 
+    $code = $block->getCode();
+    $historyCollection = $block->getCodeHistory($code->getId());
+    $helper = $block->getHelper();
+?>
+<div class="gift-card">
+    <div class="block">
+        <div class="block-title">
+            <strong>Giftcard Code <?php echo $code->getCode(); ?></strong>
+        </div>
+        <div class="table-responsive form-group">
+            <table id="giftcard_history_table" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th><strong><strong></strong>Title</strong></th>
+                        <th><strong>Information</strong></th>                    
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>
+                            <span class="item-hidden">Gift Card Code</span>
+                        </td>
+                        <td>                        
+                            <span class="item-detail"><?php echo $code->getCode(); ?></span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="item-hidden">Balance</span>                        
+                        </td>
+                        <td>
+                            <span class="item-detail">
+                                <span class="price"><?php echo $helper->getFormattedPrice($code->getRemainingBalance()); ?></span>                                             </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="item-hidden">Status</span>                        
+                        </td>
+                        <td>
+                            <span class="item-detail">
+                                <span class="price"><?php echo __($code->getStatus()); ?></span>                                             </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="item-hidden">Creation Date</span>                        
+                        </td>
+                        <td>
+                            <span class="item-detail">
+                                <span class="price"><?php echo $code->getCreationTime(); ?></span>                                             </span>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <span class="item-hidden">Expiration Date</span>                        
+                        </td>
+                        <td>
+                            <span class="item-detail">
+                                <span class="price"><?php echo $code->getExpirationTime(); ?></span>                                             </span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <?php
+    if($historyCollection->count() >= 1){
+    ?>
+    <div class="block">
+        <div class="block-title">
+            <strong>History</strong>
+        </div>
+
+        <div class="table-responsive form-group">
+            <table id="giftcard_history_table" class="table table-bordered table-striped">
+                <thead>
+                    <tr>
+                        <th><strong><strong></strong>Action</strong></th>
+                        <th><strong>Remaining Balance</strong></th>
+                        <th><strong>Date</strong></th>
+                        <th><strong>Order</strong></th>
+                        <th><strong>Comments</strong></th>
+                        <th><strong>Action By</strong></th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php
+                foreach($historyCollection as $history){
+                ?>
+                    <tr>
+                        <td>
+                            <span class="item-detail"><?php echo $history->getAction(); ?></span>
+                        </td>
+                        <td>
+                            <span class="item-detail">
+                                <span class="price"><?php echo $helper->getFormattedPrice($history->getValue()); ?></span>                                                                    </span>
+                        </td>
+                        <td>
+                            <span class="item-detail"><?php echo $history->getCreationTime(); ?></span>
+                        </td>
+                        <td>
+                            <span class="item-detail">
+                                <?php
+                                if($history->getOrder() != 0){
+                                    $orderId = $history->getOrder()
+                                ?>
+                                <a href="<?php echo $block->getUrl('sales/order/view',array('order_id'=>$orderId)); ?>">
+                                <?php echo $block->getOrderIncrementId($orderId); ?>
+                                </a>
+                                <?php
+                                }
+                                else{
+                                    echo 'Order Id Not found';
+                                }
+                                ?>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="item-detail">
+                                <?php echo $history->getComments(); ?>
+                            </span>
+                        </td>
+                        <td>
+                            <span class="item-detail">
+                                <?php echo $history->getActionBy(); ?>
+                            </span>
+                        </td>
+                    </tr>
+                    <?php
+                }
+                    ?>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <?php
+    }
+    ?>
+    <div class="form-group">
+        <div class="row">
+            <div class="col-xs-4">
+                <p class="back-link">
+                    <a href="<?php echo $block->getReferer(); ?>">
+                        <small>«</small>Back 
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

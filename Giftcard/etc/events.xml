@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!--
+/* Magedelight
+ * Copyright (C) 2016 Magedelight <info@magedelight.com>
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://opensource.org/licenses/gpl-3.0.html.
+ *
+ * @category Magedelight
+ * @package Magedelight_Giftcard
+ * @copyright Copyright (c) 2016 Mage Delight (http://www.magedelight.com/)
+ * @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author Magedelight <info@magedelight.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="checkout_submit_all_after">
+        <observer name="magedelight_giftcard_code_order_place" instance="Magedelight\Giftcard\Observer\Frontend\PlaceCodeOrder" />
+        <observer name="magedelight_giftcard_product_order_place" instance="Magedelight\Giftcard\Observer\Frontend\PlaceProductOrder" />
+    </event>
+    <event name="catalog_product_load_after">
+        <observer name="magedelight_giftcard_observer_set_option_for_item_add" instance="Magedelight\Giftcard\Observer\Frontend\SetGiftcardOptions"/>
+    </event>
+    <event name="checkout_cart_product_add_after">
+        <observer name="magedelight_giftcard_observer_set_price_for_item" instance="Magedelight\Giftcard\Observer\Frontend\SetGiftcardPrice"/>
+    </event>
+    <event name="checkout_cart_product_update_after">
+        <observer name="magedelight_giftcard_observer_set_price_for_item" instance="Magedelight\Giftcard\Observer\Frontend\SetGiftcardPrice"/>
+    </event>
+    <event name="controller_action_predispatch_checkout_cart_add">
+        <observer name="magedelight_giftcard_observer_before_cart_add" instance="Magedelight\Giftcard\Observer\Frontend\BeforeCartAdd" />
+    </event>
+    <event name="controller_action_predispatch">
+      <observer name="reset_gifcard_code" instance="Magedelight\Giftcard\Observer\Frontend\ResetCodes" shared="false" />
+    </event>
+</config>

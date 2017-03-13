@@ -1,0 +1,84 @@
+<?php
+/* Magedelight
+ * Copyright (C) 2016 Magedelight <info@magedelight.com>
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://opensource.org/licenses/gpl-3.0.html.
+ *
+ * @category Magedelight
+ * @package Magedelight_Giftcard
+ * @copyright Copyright (c) 2016 Mage Delight (http://www.magedelight.com/)
+ * @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author Magedelight <info@magedelight.com>
+ */
+?>
+<?php
+    if($block->isGiftcardAllowed()){
+    $giftCardCollection = $block->getAppliedGiftCards();
+?>
+<div class="block discount" id="giftcard-discount" data-mage-init='{"collapsible":{"openedState": "active", "saveState": false}}'>
+    <div class="title" data-role="title">
+        <strong id="giftcard-discount-heading" role="heading" aria-level="2"><?php /* @escapeNotVerified */ echo __('Apply Giftcard Code') ?></strong>
+    </div>
+    <div class="content" data-role="content" aria-labelledby="block-giftcard-heading">
+        <form id="giftcard-coupon-form" action="<?php echo $block->getUrl('giftcard/cart/giftcardPost'); ?>" method="post"
+              data-mage-init='{"giftcardCode":{"couponCodeSelector": "#giftcard_code",
+                                               "removeCouponSelector": "#remove-giftcard-coupon",
+                                               "applyButton": "button.action.apply-gift",
+                                               "cancelButton": "button.action.cancel-gift"}}'>
+            <div class="fieldset coupon<?php count($giftCardCollection) ? ' applied' : ''?>">
+                
+                <input type="hidden" name="remove" id="remove-giftcard-coupon" value="0" />
+                <div class="field float giftwrapper">
+                    <label for="giftcard_code" class="label"><span><?php /* @escapeNotVerified */ echo __('Enter giftcard code') ?></span></label>
+                    <div class="control">
+                        <input type="text" class="input-text" id="giftcard_code" name="giftcard_code" value="<?php echo $block->escapeHtml($block->getGiftcardCode()) ?>" placeholder="<?php echo $block->escapeHtml(__('Enter Giftcard code'));?>" />
+                    </div>
+                    <?php if (count($giftCardCollection) > 0){ ?>
+                        <div class="gc-applied-gift-cards">
+                            <div class="applied-gift-card-heading"><?php /* @escapeNotVerified */ echo __('Applied Gift Cards');?></div>
+                            
+                                <ul>
+                                    <?php foreach ($giftCardCollection as $giftCard){ ?>
+                                    <li>
+                                        <?php if (count($giftCardCollection) > 1){ ?>
+                                        <input name="giftcard_remove[]" value="<?php echo $giftCard->getCode();?>"  class="checkbox" type="checkbox">
+                                        <?php }else{ ?>
+                                        <input name="giftcard_remove[]" value="<?php echo $giftCard->getCode();?>" type="hidden">
+                                        <?php } ?>
+                                        <label><?php echo $giftCard->getCode();?></label>
+                                    </li>
+                                    <?php } ?>
+                                </ul>
+                            
+                        </div>
+                    <?php } ?>
+                </div>
+                <div class="actions-toolbar float giftbtnWrapper">
+                        <button class="action apply-gift primary giftbtn" type="button" value="<?php /* @escapeNotVerified */ echo __('Apply Giftcard Code') ?>">
+                            <span><?php /* @escapeNotVerified */ echo __('Apply Giftcard Code') ?></span>
+                        </button>
+                    
+                   <?php if (count($giftCardCollection) > 0){ ?> 
+                            <button  type="button" class="action cancel-gift primary giftbtn" value="<?php /* @escapeNotVerified */ echo __('Cancel Giftcard') ?>"><span><?php /* @escapeNotVerified */ echo __('Remove Giftcard') ?></span></button>
+                   <?php } ?>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<?php
+    }
+?>

@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/* Magedelight
+ * Copyright (C) 2016 Magedelight <info@magedelight.com>
+ *
+ * NOTICE OF LICENSE
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program. If not, see http://opensource.org/licenses/gpl-3.0.html.
+ *
+ * @category Magedelight
+ * @package Magedelight_Giftcard
+ * @copyright Copyright (c) 2016 Mage Delight (http://www.magedelight.com/)
+ * @license http://opensource.org/licenses/gpl-3.0.html GNU General Public License,version 3 (GPL-3.0)
+ * @author Magedelight <info@magedelight.com>
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magedelight_Giftcard::giftcard_root" title="Giftcard" module="Magedelight_Giftcard" sortOrder="50" resource="Magedelight_Giftcard::giftcard_root" />
+        <add id="Magedelight_Giftcard::codes" title="Manage Codes" translate="title" module="Magedelight_Giftcard" sortOrder="10" parent="Magedelight_Giftcard::giftcard_root" action="giftcard/codes/" resource="Magedelight_Giftcard::codes" />
+        <add id="Magedelight_Giftcard::products" title="Manage Gift Products" translate="title" module="Magedelight_Giftcard" sortOrder="10" parent="Magedelight_Giftcard::giftcard_root" action="giftcard/product/" resource="Magedelight_Giftcard::products" />
+        <add id="Magedelight_Giftcard::history" title="History" translate="title" module="Magedelight_Giftcard" sortOrder="10" parent="Magedelight_Giftcard::giftcard_root" action="giftcard/history/" resource="Magedelight_Giftcard::history" />
+        <add id="Magedelight_Giftcard::settings" title="Settings" translate="title" module="Magedelight_Giftcard" sortOrder="15" parent="Magedelight_Giftcard::giftcard_root" action="adminhtml/system_config/edit/section/magedelight/" resource="Magedelight_Giftcard::settings" />
+    </menu>
+</config>

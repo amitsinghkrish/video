@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"  xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd" layout="2columns-left">
+    <update handle="customer_account"/>
+    <body>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="title" xsi:type="string">Giftcards</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="content">
+                <block class="Magedelight\Giftcard\Block\Customer\Giftcard" name="giftcard.customer.account" template="Magedelight_Giftcard::customer/account/details.phtml" cacheable="false"/>
+        </referenceContainer>
+    </body>
+</page>

@@ -1,0 +1,83 @@
+<!--@subject Giftcard Mail@-->
+<!--@styles
+body,td { color:#2f2f2f; font:11px/1.35em Verdana, Arial, Helvetica, sans-serif; }
+@-->
+<div style="background:#F6F6F6; font-family:Verdana, Arial, Helvetica, sans-serif; font-size:12px; margin:0; padding:0;">
+    <table cellspacing="0" cellpadding="0" border="0" height="100%" width="100%">
+        <tbody>
+            <tr>
+                <td valign="top" align="center" style="padding:0px 0 0px 0">
+                    <table width="650" cellspacing="0" cellpadding="10" border="0" bgcolor="#FFFFFF" style="border:1px solid #E0E0E0;">
+                        <thead>
+                            <tr>
+                                <td valign="top">
+                                    <a href="{{store url=""}}"><img width="100%" src="{{trans "%giftcard_image" giftcard_image=$data.giftcard_image}}" alt="{{var logo_alt}}" style="margin-bottom:10px;" border="0"></a></td>
+                            </tr>
+                            <tr>
+                                <th>{{trans "Code : %code" code=$data.code}}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <h2 style="font-size:18px; font-weight:normal; margin:0;">{{trans "Price : %remaining_balance" remaining_balance=$data.remaining_balance|raw}}</h2>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top">                                    
+                                  
+                                    <p style="font-size:12px; line-height:16px; margin:0;">{{trans "Expire Date : %expiration_time" expiration_time=$data.expiration_time}}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td valign="top">                                    
+                                   
+                                    <p style="font-size:12px; line-height:16px; margin:0;">{{trans "Message : %recipient_message" recipient_message=$data.recipient_message}}</p>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    
+                                    <table cellspacing="0" cellpadding="0" border="0" width="650">
+                                        <thead>
+                                            <tr>
+                                                <th align="left" width="325" bgcolor="#EAEAEA" style="font-size:13px; padding:5px 9px 6px 9px; line-height:1em;">From :</th>
+                                                <th width="10"></th>
+                                                <th align="left" width="325" bgcolor="#EAEAEA" style="font-size:13px; padding:5px 9px 6px 9px; line-height:1em;">To :</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td valign="top" style="font-size:12px; padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;">
+                                                    {{trans "Name : %customer_name" customer_name=$data.customer_name}}&nbsp;
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td valign="top" style="font-size:12px; padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;">
+                                                    {{trans "Name : %recipient_name" recipient_name=$data.recipient_name}}
+                                                    &nbsp;
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td valign="top" style="font-size:12px; padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;">
+                                                    {{trans "Email : %customer_email" customer_email=$data.customer_email}}&nbsp;
+                                                </td>
+                                                <td>&nbsp;</td>
+                                                <td valign="top" style="font-size:12px; padding:7px 9px 9px 9px; border-left:1px solid #EAEAEA; border-bottom:1px solid #EAEAEA; border-right:1px solid #EAEAEA;">
+                                                    {{trans "Email : %recipient_email" recipient_email=$data.recipient_email}}
+                                                    &nbsp;
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>                                    
+                                </td>
+                            </tr>
+                            <tr>
+                                <td bgcolor="#EAEAEA" align="center" style="background:#EAEAEA; text-align:center;"><center><p style="font-size:12px; margin:0;">Continue Shopping <strong><a href="{{store url=""}}">{{trans "Click Here"}}</a></strong></p></center></td>
+            </tr>
+        </tbody>
+    </table>
+</td>
+</tr>
+</tbody>
+</table>
+</div>

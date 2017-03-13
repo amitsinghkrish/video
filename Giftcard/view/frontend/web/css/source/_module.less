@@ -1,0 +1,68 @@
+.giftvoucherprice-box { width: 100%; float: left; 
+	.form-group {float: left; width: 100%;
+		label { display: block; padding: 0 0 5px 0;font-weight: 600; float: left; }
+		label.validity_form { float: right; color: #11b400; }
+		input { margin: 0 0 4px 0; }
+	}
+
+}
+.giftvoucher-product-info { padding: 20px 0;width: 100%; float: left;
+		.validity_form form-group { width: 100%; float: left; }	
+		.recipient-ship-form-box {  padding:0 0 10px 0; 
+			.recipient_ship_form {float: left; width: 100%; box-sizing: border-box; padding: 0 0px 10px 0px; 
+				label {font-weight: 600;
+					input { margin: 3px 8px 0 0; vertical-align: top; }
+				}
+			}
+			.giftcard-send-friend { float: left; width: 100%; box-sizing: border-box; padding: 0 0 10px 0px;
+				label {font-weight: 600;
+					input { margin: 3px 8px 0 0;vertical-align: top; }
+				}
+			 }
+		 }
+		 .giftvoucher-receiver {
+			.form-group { padding: 0 0px 10px 0; float: left; width: 50%; box-sizing: border-box;
+				label { display: block; padding: 0 0 5px 0; font-weight: 600; 
+					em { color: #e02b27; }
+				}
+			 &.name {padding-right: 10px; }		
+			 &.name1 { padding-left: 10px;}		
+			 &.email { width: 100%; }		
+			 &.message { width: 100%; }		
+			 }
+		 }
+		.giftvoucher-button-box { text-align: right; width: 100%; float: left; padding-top: 10px } 
+}
+.product-gift-range {
+	.product-info-main {
+		.product-info-price {
+			.price-box {padding-bottom:0;}
+		}
+		.product-info-stock-sku { vertical-align: middle;padding-bottom:0; }
+	}
+
+}
+.gc-applied-gift-cards {
+	.applied-gift-card-heading { display: block; padding: 10px 0 8px 0; font-weight: 600; }
+	  ul { margin: 0; padding: 0 0 0 0; list-style: none; 
+			li { padding: 0 0 6px 0; margin: 0; vertical-align: top;
+				label { line-height: 12px; }
+			 }
+		}
+}
+.field.float.giftwrapper {float: left; width: 76%;  margin: 0 0 14px 0;}
+.actions-toolbar.giftbtnWrapper { float: left; width: 100%; 
+	.action.primary {margin: 0 10px 10px -1px; border-radius: 3px; }
+}
+
+
+@media only screen and (max-width: (@screen__l - 45)) {
+	.giftvoucher-product-info {
+		.giftvoucher-receiver {
+			.form-group { width: 100%;
+				 &.name {padding-right: 0px; }		
+			 	 &.name1 { padding-left: 0px;}		
+			 }
+		}
+	}
+}
